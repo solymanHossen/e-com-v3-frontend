@@ -112,6 +112,46 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Dynamic Theme Utility Classes */
+@layer utilities {
+  /* Color utilities */
+  .text-primary { color: var(--color-primary); }
+  .text-secondary { color: var(--color-secondary); }
+  .text-success { color: var(--color-success); }
+  .text-warning { color: var(--color-warning); }
+  
+  .bg-primary { background-color: var(--color-primary); }
+  .bg-secondary { background-color: var(--color-secondary); }
+  .bg-success { background-color: var(--color-success); }
+  .bg-warning { background-color: var(--color-warning); }
+  
+  .border-primary { border-color: var(--color-primary); }
+  .border-secondary { border-color: var(--color-secondary); }
+  .border-success { border-color: var(--color-success); }
+  .border-warning { border-color: var(--color-warning); }
+  
+  /* Text size utilities */
+  .text-xs { font-size: var(--text-xs); }
+  .text-sm { font-size: var(--text-sm); }
+  .text-md { font-size: var(--text-md); }
+  .text-lg { font-size: var(--text-lg); }
+  .text-xl { font-size: var(--text-xl); }
+  .text-2xl { font-size: var(--text-2xl); }
+  .text-3xl { font-size: var(--text-3xl); }
+  .text-4xl { font-size: var(--text-4xl); }
+  .text-5xl { font-size: var(--text-5xl); }
+  .text-6xl { font-size: var(--text-6xl); }
+  .text-7xl { font-size: var(--text-7xl); }
+  .text-8xl { font-size: var(--text-8xl); }
+  .text-9xl { font-size: var(--text-9xl); }
+  .text-10xl { font-size: var(--text-10xl); }
+  
+  /* Spacing utilities */
+  .p-base { padding: var(--spacing-base); }
+  .m-base { margin: var(--spacing-base); }
+  .gap-base { gap: var(--spacing-base); }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
