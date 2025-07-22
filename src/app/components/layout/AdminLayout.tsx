@@ -1,9 +1,11 @@
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import { useThemeStore } from '@/stores/themeStore';
+
 import { AdminSidebar } from './AdminSidebar';
 import { AdminHeader } from './AdminHeader';
-import { cn } from '@/lib/utils';
+import { cn } from '@/app/lib/utils';
+import { useThemeStore } from '@/app/stores/themeStore';
+
 
 interface AdminLayoutProps {
   children: ReactNode;

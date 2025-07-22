@@ -1,15 +1,17 @@
+"use client"
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Palette, Layout, Type, Zap, Eye, RotateCcw } from 'lucide-react';
-import { useThemeStore, THEME_PALETTES, ThemePalette, LayoutType, BorderRadius, ComponentSize, TypeScale } from '@/stores/themeStore';
-import { useUIStore } from '@/stores/uiStore';
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/utils';
+
+import { BorderRadius, ComponentSize, LayoutType, THEME_PALETTES, ThemePalette, TypeScale, useThemeStore } from '@/app/stores/themeStore';
+import { useUIStore } from '@/app/stores/uiStore';
 
 export const ThemeSettings = () => {
   const {
@@ -322,11 +324,11 @@ export const ThemeSettings = () => {
                 </p>
               </div>
 
-              <div className="text-center">
+              {/* <div className="text-center">
                 <Badge variant="secondary">
                   Theme: {THEME_PALETTES[theme].name}
                 </Badge>
-              </div>
+              </div> */}
             </CardContent>
           </Card>
         </motion.div>
@@ -334,3 +336,5 @@ export const ThemeSettings = () => {
     </motion.div>
   );
 };
+
+

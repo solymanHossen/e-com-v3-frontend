@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { Search, Bell, Settings, User, Sun, Moon, Monitor } from 'lucide-react';
-import { useThemeStore } from '@/stores/themeStore';
-import { useUIStore } from '@/stores/uiStore';
+import { cn } from '@/app/lib/utils';
+import { useThemeStore } from '@/app/stores/themeStore';
+import { useUIStore } from '@/app/stores/uiStore';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { 
@@ -12,7 +13,7 @@ import {
   DropdownMenuSeparator 
 } from '@/components/ui/dropdown-menu';
 import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/utils';
+
 
 export const AdminHeader = () => {
   const { mode, setMode, size, setSettingsOpen, previewMode, setPreviewMode } = useThemeStore();
@@ -51,7 +52,7 @@ export const AdminHeader = () => {
       {/* Left side - Breadcrumbs */}
       <div className="flex items-center space-x-2">
         <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
-          {breadcrumbs.map((crumb, index) => (
+          {breadcrumbs.map((crumb:any, index:any) => (
             <div key={index} className="flex items-center space-x-2">
               {index > 0 && <span>/</span>}
               <span className={cn(
@@ -158,7 +159,7 @@ export const AdminHeader = () => {
                 No new notifications
               </div>
             ) : (
-              notifications.slice(0, 5).map((notification) => (
+              notifications.slice(0, 5).map((notification:any) => (
                 <DropdownMenuItem key={notification.id} className="flex flex-col items-start p-4">
                   <div className="flex w-full justify-between items-start">
                     <div className="flex-1">

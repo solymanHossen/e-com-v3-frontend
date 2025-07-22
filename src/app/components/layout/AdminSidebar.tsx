@@ -1,5 +1,6 @@
+"use client";
 import { motion } from 'framer-motion';
-import { NavLink, useLocation } from 'react-router-dom';
+
 import { 
   BarChart3, 
   Package, 
@@ -14,10 +15,13 @@ import {
   ChevronLeft,
   ChevronRight
 } from 'lucide-react';
-import { useThemeStore } from '@/stores/themeStore';
-import { useUIStore } from '@/stores/uiStore';
-import { cn } from '@/lib/utils';
+
 import { Button } from '@/components/ui/button';
+import { usePathname } from 'next/navigation';
+import { useUIStore } from '@/app/stores/uiStore';
+import { useThemeStore } from '@/app/stores/themeStore';
+import { NavigationMenuLink } from '@/components/ui/navigation-menu';
+import { cn } from '@/app/lib/utils';
 
 const navigation = [
   { name: 'Dashboard', href: '/admin', icon: BarChart3, id: 'dashboard' },
@@ -36,7 +40,7 @@ const settingsNavigation = [
 ];
 
 export const AdminSidebar = () => {
-  const location = useLocation();
+  const location = usePathname();
   const { layout, sidebarCollapsed, setSidebarCollapsed, size } = useThemeStore();
   const { setActiveNav } = useUIStore();
 
@@ -46,8 +50,8 @@ export const AdminSidebar = () => {
   if (isMinimal) return null;
 
   const NavItem = ({ item, isActive }: { item: any; isActive: boolean }) => (
-    <NavLink
-      to={item.href}
+    <NavigationMenuLink
+      href={item.href}
       onClick={() => setActiveNav(item.id)}
       className={cn(
         "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200",
@@ -70,7 +74,7 @@ export const AdminSidebar = () => {
       {(!sidebarCollapsed || isTopLayout) && (
         <span className="truncate">{item.name}</span>
       )}
-    </NavLink>
+    </NavigationMenuLink>
   );
 
   if (isTopLayout) {
@@ -78,13 +82,13 @@ export const AdminSidebar = () => {
       <div className="flex items-center justify-between px-6 py-4 bg-card">
         <div className="flex items-center space-x-1">
           {navigation.map((item) => {
-            const isActive = location.pathname === item.href;
+            const isActive = location === item.href;
             return <NavItem key={item.id} item={item} isActive={isActive} />;
           })}
         </div>
         <div className="flex items-center space-x-1">
           {settingsNavigation.map((item) => {
-            const isActive = location.pathname === item.href;
+            const isActive = location === item.href;
             return <NavItem key={item.id} item={item} isActive={isActive} />;
           })}
         </div>
@@ -131,7 +135,7 @@ export const AdminSidebar = () => {
       {/* Navigation */}
       <div className="flex-1 flex flex-col overflow-y-auto p-4 space-y-1">
         {navigation.map((item) => {
-          const isActive = location.pathname === item.href;
+          const isActive = location === item.href;
           return <NavItem key={item.id} item={item} isActive={isActive} />;
         })}
 
@@ -151,7 +155,7 @@ export const AdminSidebar = () => {
         )}
 
         {settingsNavigation.map((item) => {
-          const isActive = location.pathname === item.href;
+          const isActive = location=== item.href;
           return <NavItem key={item.id} item={item} isActive={isActive} />;
         })}
       </div>

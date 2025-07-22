@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -8,10 +9,14 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
-import { useThemeStore } from '@/stores/themeStore';
+// If Badge exists at another location, update the import path accordingly, for example:
 
-export const LandingPage = () => {
+// Or, if the file is named 'badge.tsx' and located in 'components/ui', ensure it exists:
+// import { Badge } from '../../components/ui/badge';
+import { useThemeStore } from '../stores/themeStore';
+
+
+export default function LandingPage(){
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [selectedPlan, setSelectedPlan] = useState('pro');
@@ -152,9 +157,9 @@ export const LandingPage = () => {
           transition={{ duration: 0.6 }}
           className="max-w-6xl mx-auto text-center relative z-10"
         >
-          <Badge variant="secondary" className="mb-6">
+          {/* <Badge variant="secondary" className="mb-6">
             🚀 New: AI-Powered Product Recommendations
-          </Badge>
+          </Badge> */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
             Build Your Dream
             <br />eCommerce Store
@@ -363,11 +368,11 @@ export const LandingPage = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <Card className={`relative hover-lift ${plan.popular ? 'ring-2 ring-primary' : ''}`}>
-                  {plan.popular && (
+                  {/* {plan.popular && (
                     <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                       Most Popular
                     </Badge>
-                  )}
+                  )} */}
                   <CardHeader className="text-center pb-4">
                     <h3 className="text-xl font-semibold">{plan.name}</h3>
                     <div className="flex items-baseline justify-center">
